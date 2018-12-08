@@ -22,6 +22,7 @@ public class LoginRequiredInterceptor extends HandlerInterceptorAdapter {
                              Object handler) throws Exception {
         if (hostHolder.getUser() == null) {
             response.sendRedirect("reglogin?next=" + request.getRequestURI());
+            return false;
         }
         return super.preHandle(request, response, handler);
     }

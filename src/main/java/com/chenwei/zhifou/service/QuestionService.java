@@ -11,6 +11,11 @@ import java.util.List;
  */
 public interface QuestionService {
 
+    public Question getById(int id);
+
+    public int addQuestion(Question question);
+
     public List<Question> getLatestQuestions(int userId, int offset, int limit);
 
+    public int updateCommentCount(int id, int count);
 }

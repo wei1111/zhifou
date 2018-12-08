@@ -17,4 +17,6 @@ public interface UserService {
     public void logout(String ticket);
 
     public User getUser(int id);
+
+    User selectByName(String username);
 }

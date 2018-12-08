@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
     HostHolder hostHolder;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Map<String, Object> register(String username, String password) {
         Map<String, Object> map = new HashMap<String, Object>();
         if (StringUtils.isBlank(username)) {
@@ -81,6 +82,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Map<String, Object> login(String username, String password) {
         Map<String, Object> map = new HashMap<String, Object>();
         if (StringUtils.isBlank(username)) {
@@ -112,6 +114,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void logout(String ticket) {
         loginTicketDAO.updateStatus(ticket, 1);
     }
@@ -119,5 +122,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUser(int id) {
         return userDAO.selectById(id);
+    }
+
+    @Override
+    public User selectByName(String username) {
+        return userDAO.selectByName(username);
     }
 }
