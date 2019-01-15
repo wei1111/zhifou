@@ -44,7 +44,6 @@ public class JedisAdapter implements InitializingBean {
         print(4, jedis.get("hello"));
         jedis.setnx("chen", "wei");
         print(5, jedis.get("chen"));
-//        jedis.setex("wu", 10, "haoran");
         print(6, jedis.get("wu"));
         jedis.getSet("chen", "shiwei");
         print(7, jedis.get("chen"));
